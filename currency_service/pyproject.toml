@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cbr-bot-task"
+name = "currency_serivce"
 version = "0.1.0"
 description = ""
 authors = ["hikary <86579751+hikaryd@users.noreply.github.com>"]
