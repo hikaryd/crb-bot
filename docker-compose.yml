@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  currency_service:
+    build: ./currency_service
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+    restart: always
+
+  telegram_bot:
+    build: ./telegram_bot
+    depends_on:
+      - redis
+      - currency_service
+    env_file: .env
+    environment:
+      - REDIS_HOST=redis
+    restart: always
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
